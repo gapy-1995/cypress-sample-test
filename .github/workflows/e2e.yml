@@ -3,7 +3,7 @@ name: Cypress Tests demo
 on: push
 
 jobs:
-  install:
+  Cypress-e2e:
     runs-on: ubuntu-22.04
     steps:
       - name: Checkout
