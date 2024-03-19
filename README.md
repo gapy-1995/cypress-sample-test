@@ -9,6 +9,7 @@ This repo suppose to practice and learn cypress framework
 - [] Apply fluent design pattern
 - [] Integrate with Slack channel #cypress-alert-non-prod
 - [] Implement shell script to count flaky test
+- [] Add matrix parallel test
 
 ### How to use
 1. run script `npm install` 
