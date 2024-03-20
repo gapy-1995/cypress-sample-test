@@ -1,0 +1,28 @@
+name: Run e2e test by manual
+
+
+on:
+  workflow_dispatch:
+    input:
+      select_project:
+        description: 'select project'
+        required: true
+        default: 'automationExercise'
+        option:
+            - saucedemo
+            - automationExercise
+      select_environment:
+        description: 'select test environment'
+        required: true
+        default: qa
+        option:
+            - qa
+            - staging
+            - production
+            
+
+jobs:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+      run: echo "Checking out the code"
