@@ -3,26 +3,29 @@ name: Run e2e test by manual
 
 on:
   workflow_dispatch:
-    input:
+    inputs:
       select_project:
         description: 'select project'
         required: true
         default: 'automationExercise'
-        option:
+        type: choice
+        options:
             - saucedemo
             - automationExercise
       select_environment:
         description: 'select test environment'
         required: true
         default: qa
-        option:
+        type: choice
+        options:
             - qa
             - staging
             - production
             
 
 jobs:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-      run: echo "Checking out the code"
+    run-e2e-test:
+        runs-on: ubuntu-latest
+        steps:
+            - run: echo "Checking out the code for ${{github.event.inputs.select_project}}"
+            - run: echo " Running on e2e test environment ${{github.event.inputs.select_environment}}"
