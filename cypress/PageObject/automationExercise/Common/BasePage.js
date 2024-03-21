@@ -1,4 +1,13 @@
 /// <reference types="cypress" />
-const navigateToHomePage = () => {
 
+
+class BasePage {
+    //definne base object factory in here
+                
+    // locator sector
+    navigateToHomePage = () => {
+        cy.visit('http://automationexercise.com')
+    }   
+
+    
 }

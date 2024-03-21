@@ -1,2 +1,6 @@
 
 /node_modules
+/cypress/reports
+/cypress/reports
+/cypress/screenshots
+/cypress/reports/html
