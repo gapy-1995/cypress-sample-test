@@ -33,7 +33,7 @@ jobs:
 
         - name: Set Environment URL
           env:
-            QA_URL: ${{ secrets.QA }}
+            QA_URL: ${{ vars.QA }}
             STAGING_URL: ${{ secrets.STAGING }}
             SELECTED_ENV: ${{ github.event.inputs.select_environment }}
           run: |
