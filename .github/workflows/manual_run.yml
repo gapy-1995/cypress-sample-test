@@ -57,7 +57,7 @@ jobs:
             npm install --save-dev
             npm install cypress
         - name: Log CYPRESS_BASE_URL
-          run: echo "CYPRESS_ENV value is $CYPRESS_ENV"
+          run: echo "CYPRESS_ENV value is $ENV_URL"
           env:
             CYPRESS_ENV: ${{ env.ENV_URL }}
         # - name: Cypress run
