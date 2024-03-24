@@ -20,7 +20,11 @@ on:
             - qa
             - staging
             - production
-            
+env:
+  QA_URL: ${{ vars.QA }}
+  STAGING_URL: ${{ secrets.STAGING }}
+  SELECTED_ENV: ${{ github.event.inputs.select_environment }}
+  
 
 jobs:
   prepare-test:
@@ -32,13 +36,9 @@ jobs:
           uses: actions/checkout@v2
 
         - name: Set Environment URL
-          env:
-            QA_URL: ${{ vars.QA }}
-            STAGING_URL: ${{ secrets.STAGING }}
-            SELECTED_ENV: ${{ github.event.inputs.select_environment }}
           run: |
             if [ $SELECTED_ENV == "qa" ]; then
-              echo "Setting ENV_URL to QA URL: ${{QA_URL}}"
+              echo "Setting ENV_URL to QA URL: $QA_URL"
               echo "ENV_URL=$QA_URL" >> $GITHUB_ENV
 
             elif [ $SELECTED_ENV == "staging" ]; then
