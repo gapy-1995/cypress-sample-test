@@ -39,11 +39,13 @@ jobs:
             STAGING_URL: ${{ secrets.STAGING }}
             SELECTED_ENV: ${{ github.event.inputs.select_environment }}
           run: |
-            if [[ $SELECTED_ENV == "QA"]]; then
+            if [ $SELECTED_ENV == "QA"]; then
               echo $ENV_URL=$QA_URL >> $GITHUB_ENV
-            elif [[ $SELECTED_ENV == "STAGING"]]; then
+            elif [ $SELECTED_ENV == "STAGING" ]; then
               echo $ENV_URL=$STAGING_URL >> $GITHUB_ENV
-            else 
+            else
+              echo "No environment selected"
+            fi
             
         - name: Set up Node.js
           uses: actions/setup-node@v4.0.2
