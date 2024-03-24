@@ -38,15 +38,21 @@ jobs:
             SELECTED_ENV: ${{ github.event.inputs.select_environment }}
           run: |
             if [ $SELECTED_ENV == "qa" ]; then
+              echo "Setting ENV_URL to QA URL: $QA_URL"
               echo "ENV_URL=$QA_URL" >> $GITHUB_ENV
+
             elif [ $SELECTED_ENV == "staging" ]; then
+              echo "Setting ENV_URL to STAGING URL: $STAGING_URL"
               echo "ENV_URL=$STAGING_URL" >> $GITHUB_ENV
             else
               echo "No environment selected"
               exit 1
             fi
         
-        
+        - name: Print ENV_URL
+          run: echo "ENV_URL is set to $ENV_URL"
+          env:
+            ENV_URL: ${{ env.ENV_URL }}
         - name: Set up Node.js
           uses: actions/setup-node@v4.0.2
           with: 
@@ -56,10 +62,6 @@ jobs:
         - run: |
             npm install --save-dev
             npm install cypress
-        - name: Log CYPRESS_BASE_URL
-          run: echo "CYPRESS_ENV value is ${{ENV_URL}}"
-          env:
-            CYPRESS_ENV: ${{ env.ENV_URL }}
         # - name: Cypress run
         #   uses: cypress-io/github-action@v6
         #   env:
