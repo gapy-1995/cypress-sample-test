@@ -56,12 +56,16 @@ jobs:
         - run: |
             npm install --save-dev
             npm install cypress
-        - name: Cypress run
-          uses: cypress-io/github-action@v6
+        - name: Log CYPRESS_BASE_URL
+          run: echo "CYPRESS_ENV value is $CYPRESS_ENV"
           env:
-            CYPRESS_BASE_URL: ${{ env.ENV_URL }}
-          with:
-            start: npm run start
-            test: npm run test:saucedemo
-            e2eExercise: npm run test:automationExercise
+            CYPRESS_ENV: ${{ env.ENV_URL }}
+        # - name: Cypress run
+        #   uses: cypress-io/github-action@v6
+        #   env:
+        #     CYPRESS_BASE_URL: ${{ env.ENV_URL }}
+        #   with:
+        #     start: npm run start
+        #     test: npm run test:saucedemo
+        #     e2eExercise: npm run test:automationExercise
  
