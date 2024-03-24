@@ -38,7 +38,7 @@ jobs:
             SELECTED_ENV: ${{ github.event.inputs.select_environment }}
           run: |
             if [ $SELECTED_ENV == "qa" ]; then
-              echo "Setting ENV_URL to QA URL: $QA_URL"
+              echo "Setting ENV_URL to QA URL: ${{QA_URL}}"
               echo "ENV_URL=$QA_URL" >> $GITHUB_ENV
 
             elif [ $SELECTED_ENV == "staging" ]; then
@@ -50,7 +50,7 @@ jobs:
             fi
         
         - name: Print ENV_URL
-          run: echo "ENV_URL is set to $ENV_URL"
+          run: echo "ENV_URL is set to ${{ENV_URL}}"
           env:
             ENV_URL: ${{ env.ENV_URL }}
         - name: Set up Node.js
