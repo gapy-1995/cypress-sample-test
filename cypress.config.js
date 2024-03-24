@@ -10,7 +10,7 @@ module.exports = defineConfig({
     // saveAllAttempts: false,
   },
   e2e: {
-    baseUrl: 'https://www.saucedemo.com/',
+    baseUrl: process.env.CYPRESS_BASE_URL,
     setupNodeEvents(on, config) {
       // implement node event listeners here
       require('cypress-mochawesome-reporter/plugin')(on);

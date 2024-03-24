@@ -11,7 +11,6 @@ on:
         type: choice
         options:
             - saucedemo
-            - automationExercise
       select_environment:
         description: 'select test environment'
         required: true
@@ -24,8 +23,37 @@ on:
             
 
 jobs:
-    run-e2e-test:
-        runs-on: ubuntu-latest
-        steps:
-            - run: echo "Checking out the code for ${{github.event.inputs.select_project}}"
-            - run: echo " Running on e2e test environment ${{github.event.inputs.select_environment}}"
+  prepare-test:
+    runs-on: ubuntu-latest
+    steps:
+        - run: |
+
+        - run: echo "Checking out the code for ${{github.event.inputs.select_project}}"
+        - run: echo " Running on e2e test environment ${{github.event.inputs.select_environment}}"
+        - name: checkout code
+          uses: actions/checkout@v2
+
+        - name: Set Environment URL
+          env:
+            QA_URL: ${{ secrets.QA_URL }}
+            STAGING_URL: ${{ secrets.STAGING_URL }}
+            SELECTED_ENV: ${{ github.event.inputs.select_environment }}
+          run: |
+            if [[ $SELECTED_ENV -eq "QA"]]; then
+              echo $ENV_URL=$QA_URL >> $GITHUB_ENV
+            elif [[ $SELECTED_ENV -eq "STAGING"]]; then
+              echo $ENV_URL=$STAGING_URL >> $GITHUB_ENV
+            else 
+            
+        - name: Set up Node.js
+          uses: actions/setup-node@v4.0.2
+          with: 
+            node-version: '14.x'
+            cache: "npm"
+            cache-dependency-path: "package-lock.json"
+        - name: Cypress run
+          uses: cypress-io/github-action@v6
+          with:
+            start: npm run start
+            test: npm run test:saucedemo
+ 
