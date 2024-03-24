@@ -6,6 +6,7 @@
   },
   "scripts": {
     "start": "npx cypress run",
-    "test:saucedemo": "npx cypress run --spec \".\/cypress\/e2e\/saucedemo\/*.cy.js\""
+    "test:saucedemo": "npx cypress run --spec \".\/cypress\/e2e\/saucedemo\/*.cy.js\"",
+    "test:automationExercise": "npx cypress run --spec \".\/cypress\/e2e\/automationExercise\/*.cy.js\""
   }
 }

@@ -6,7 +6,7 @@ import LoginPage from '../../PageObject/automationExercise/LoginPage';
 describe('As an fragment user, i can not login to automation exercise website', ()=>{
 
     beforeEach(() => {
-       cy.visit('http://automationexercise.com')
+       cy.visit('')
     })
 
     it('Login with correct email and password', () => {
