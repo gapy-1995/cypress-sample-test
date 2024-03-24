@@ -35,13 +35,13 @@ jobs:
 
         - name: Set Environment URL
           env:
-            QA_URL: ${{ secrets.QA_URL }}
-            STAGING_URL: ${{ secrets.STAGING_URL }}
+            QA_URL: ${{ secrets.QA }}
+            STAGING_URL: ${{ secrets.STAGING }}
             SELECTED_ENV: ${{ github.event.inputs.select_environment }}
           run: |
-            if [[ $SELECTED_ENV -eq "QA"]]; then
+            if [[ $SELECTED_ENV == "QA"]]; then
               echo $ENV_URL=$QA_URL >> $GITHUB_ENV
-            elif [[ $SELECTED_ENV -eq "STAGING"]]; then
+            elif [[ $SELECTED_ENV == "STAGING"]]; then
               echo $ENV_URL=$STAGING_URL >> $GITHUB_ENV
             else 
             
