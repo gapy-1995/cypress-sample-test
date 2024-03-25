@@ -21,6 +21,7 @@ jobs:
           npm install cypress
       - name: Cypress run
         uses: cypress-io/github-action@v6
+        env:
+          CYPRESS_BASE_URL: ${{ vars.QA_BASE_URL}} 
         with:
-          start: npm run start
-          test: npm run test:saucedemo
+          spec: cypress/e2e/automationExcersice/*.cy.js
