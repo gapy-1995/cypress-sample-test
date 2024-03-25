@@ -69,4 +69,4 @@ jobs:
         with:
           # start: npm run start
           # test: npm run test:saucedemo
-          e2eExercise: npm run test:automationExercise
+          spec: cypress/e2e/automationExcersice/*.cy.js
