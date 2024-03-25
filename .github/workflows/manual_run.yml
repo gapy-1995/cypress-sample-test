@@ -30,8 +30,8 @@ jobs:
   prepare-test:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "Checking out the code for ${{vars.QA_URL}}"
-      - run: echo " Running on e2e test environment ${{github.event.inputs.select_environment}}"
+      - name: debug for sure
+        run: echo "Checking out the code for ${{vars.QA_URL}}"
       # - name: checkout code
       #   uses: actions/checkout@v2
 
