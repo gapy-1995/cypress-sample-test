@@ -21,7 +21,7 @@ on:
             - staging
             - production
 env:
-  QA_URL: ${{ vars.QA_URL }}
+  QA_URL: ${{ vars.QA_BASE_URL }}
   STAGING_URL: ${{ secrets.STAGING }}
   SELECTED_ENV: ${{ github.event.inputs.select_environment }}
   
@@ -31,7 +31,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: debug for sure
-        run: echo "Checking out the code for ${{vars.QA_URL}}"
+        run: echo "Checking out the code for ${{env.QA_URL}}"
       # - name: checkout code
       #   uses: actions/checkout@v2
 
