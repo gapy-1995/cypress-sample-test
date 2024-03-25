@@ -21,7 +21,7 @@ on:
             - staging
             - production
 env:
-  QA_URL: ${{ vars.QA }}
+  QA_URL: "https://automationexercise.com/"
   STAGING_URL: ${{ secrets.STAGING }}
   SELECTED_ENV: ${{ github.event.inputs.select_environment }}
   
