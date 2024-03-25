@@ -21,7 +21,7 @@ on:
             - staging
             - production
 env:
-  QA_URL: ${{ secrets.QA_URL }}
+  QA_URL: ${{ vars.QA_URL }}
   STAGING_URL: ${{ secrets.STAGING }}
   SELECTED_ENV: ${{ github.event.inputs.select_environment }}
   
@@ -30,43 +30,43 @@ jobs:
   prepare-test:
     runs-on: ubuntu-latest
     steps:
-        - run: echo "Checking out the code for ${{secrets.QA_URL}}"
-        - run: echo " Running on e2e test environment ${{github.event.inputs.select_environment}}"
-        # - name: checkout code
-        #   uses: actions/checkout@v2
+      - run: echo "Checking out the code for ${{vars.QA_URL}}"
+      - run: echo " Running on e2e test environment ${{github.event.inputs.select_environment}}"
+      # - name: checkout code
+      #   uses: actions/checkout@v2
 
-        # - name: Set Environment URL
-        #   run: |
-        #     if [ $SELECTED_ENV == "qa" ]; then
-        #       echo "Setting ENV_URL to QA URL: $QA_URL"
-        #       echo "ENV_URL=$QA_URL" >> $GITHUB_ENV
+      # - name: Set Environment URL
+      #   run: |
+      #     if [ $SELECTED_ENV == "qa" ]; then
+      #       echo "Setting ENV_URL to QA URL: $QA_URL"
+      #       echo "ENV_URL=$QA_URL" >> $GITHUB_ENV
 
-        #     elif [ $SELECTED_ENV == "staging" ]; then
-        #       echo "Setting ENV_URL to STAGING URL: $STAGING_URL"
-        #       echo "ENV_URL=$STAGING_URL" >> $GITHUB_ENV
-        #     else
-        #       echo "No environment selected"
-        #       exit 1
-        #     fi
-        
-        # - name: Print ENV_URL
-        #   run: echo "ENV_URL is set to $ENV_URL"
-        #   env:
-        #     ENV_URL: ${{ env.ENV_URL }}
-        # - name: Set up Node.js
-        #   uses: actions/setup-node@v4.0.2
-        #   with: 
-        #     node-version: '14.x'
-        #     cache: "npm"
-        #     cache-dependency-path: "package-lock.json"
-        # - run: |
-        #     npm install --save-dev
-        #     npm install cypress
-        # - name: Cypress run
-        #   uses: cypress-io/github-action@v6
-        #   env:
-        #     CYPRESS_BASE_URL: ${{ env.ENV_URL }}
-        #   with:
-        #     start: npm run start
-        #     test: npm run test:saucedemo
-        #     e2eExercise: npm run test:automationExercise
+      #     elif [ $SELECTED_ENV == "staging" ]; then
+      #       echo "Setting ENV_URL to STAGING URL: $STAGING_URL"
+      #       echo "ENV_URL=$STAGING_URL" >> $GITHUB_ENV
+      #     else
+      #       echo "No environment selected"
+      #       exit 1
+      #     fi
+      
+      # - name: Print ENV_URL
+      #   run: echo "ENV_URL is set to $ENV_URL"
+      #   env:
+      #     ENV_URL: ${{ env.ENV_URL }}
+      # - name: Set up Node.js
+      #   uses: actions/setup-node@v4.0.2
+      #   with: 
+      #     node-version: '14.x'
+      #     cache: "npm"
+      #     cache-dependency-path: "package-lock.json"
+      # - run: |
+      #     npm install --save-dev
+      #     npm install cypress
+      # - name: Cypress run
+      #   uses: cypress-io/github-action@v6
+      #   env:
+      #     CYPRESS_BASE_URL: ${{ env.ENV_URL }}
+      #   with:
+      #     start: npm run start
+      #     test: npm run test:saucedemo
+      #     e2eExercise: npm run test:automationExercise
