@@ -30,7 +30,7 @@ jobs:
   prepare-test:
     runs-on: ubuntu-latest
     steps:
-        - run: echo "Checking out the code for ${{secrest.QA_URL}}"
+        - run: echo "Checking out the code for ${{secrets.QA_URL}}"
         - run: echo " Running on e2e test environment ${{github.event.inputs.select_environment}}"
         # - name: checkout code
         #   uses: actions/checkout@v2
