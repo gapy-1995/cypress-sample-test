@@ -59,14 +59,14 @@ jobs:
           node-version: '14.x'
           cache: "npm"
           cache-dependency-path: "package-lock.json"
-      # - run: |
-      #     npm install --save-dev
-      #     npm install cypress
-      # - name: Cypress run
-      #   uses: cypress-io/github-action@v6
-      #   env:
-      #     CYPRESS_BASE_URL: $ENV_URL
-      #   with:
-      #     start: npm run start
-      #     test: npm run test:saucedemo
-      #     e2eExercise: npm run test:automationExercise
+      - run: |
+          npm install --save-dev
+          npm install cypress
+      - name: Cypress run
+        uses: cypress-io/github-action@v6
+        env:
+          CYPRESS_BASE_URL: ${{ env.ENV_URL }}
+        with:
+          start: npm run start
+          # test: npm run test:saucedemo
+          e2eExercise: npm run test:automationExercise
