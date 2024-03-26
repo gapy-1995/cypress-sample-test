@@ -1,5 +1,4 @@
-class HomePage {
+export default class HomePage {
     
 }
 
-export default HomePage;

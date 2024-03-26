@@ -1,4 +1,3 @@
-class RegisterPage {
+export default class RegisterPage {
 
 }
-export default RegisterPage;

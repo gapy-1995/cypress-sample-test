@@ -10,7 +10,7 @@ let homeNav = {}
 let productNav = {}
 
 
-class HeaderBar {
+class HeaderBar extends BasePage {
 
     navigateToHomePage = () => {
         navBar.homeNav().click()
@@ -18,7 +18,7 @@ class HeaderBar {
 
     navigateToLoginPage = () => {
         navBar.loginNav().click()
+        BasePage.createPage('LoginPage')
     };
 }
 
-export default HeaderBar = new HeaderBar()
