@@ -4,7 +4,11 @@ let passwordTxtField = () => cy.get('input[data-qa="login-password"]')
 let loginButton = () => cy.get('button[data-qa="login-button"]')
 let logoutButton = () => cy.get('.shop-menu > .nav > :nth-child(4) > a')
 let signUpButton = () => cy.get('a[data-qa="sign-up-link"]')
-class LoginPage {
+
+export default class LoginPage {
+    constructor(){
+
+    }
     inputEmail = email =>{
         emailTxtField().type(email)
     }
@@ -23,8 +27,6 @@ class LoginPage {
 
     clickSignUpButton() {
         signUpButton().click()
-        return new RegisterPage()
+        // return BasePage.createPage('RegisterPage')
     }
 }
-
-export default LoginPage
